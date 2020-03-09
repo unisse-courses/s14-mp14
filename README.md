@@ -1,3 +1,4 @@
 # Fanfic Reader
 ## Team Members:
-*Pascual, Jeremy
+* Pascual, Jeremy
+* Ventucillo, Abigail
