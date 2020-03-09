@@ -1,1 +1,3 @@
-# s14-mp14
+# Fanfic Reader
+## Team Members:
+*Pascual, Jeremy
