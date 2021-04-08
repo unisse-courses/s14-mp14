@@ -60,17 +60,13 @@ body {
   transition: all 0.2s ease-out;
 }
 
-.nav-search {
-  font: inherit;
-  color: white;
-  margin-left: 30px;
-  display: inline;
-  background-color: transparent;
-}
-
 .fa-stack {
   color: rgba(128, 128, 128, 0);
   margin-right: 0px;
+}
+
+.nav-search:hover {
+  color: rgba(128, 128, 128, 0.548);
 }
 
 .nav-save:hover {
@@ -132,10 +128,18 @@ body {
 
 /* container */
 
-.container {
+.container-light {
   max-width: 1300px;
   margin: 0px auto;
   overflow: auto;
+  background-color: rgb(238, 238, 238);
+}
+
+.container-dark {
+  max-width: 1300px;
+  margin: 0px auto;
+  overflow: auto;
+  background-color: var(--darkblueprimary);
 }
 
 .nav-footer-container {
@@ -290,4 +294,170 @@ body {
   font-weight: 700;
   font-size: 20px;
   color: rgba(231, 226, 226, 0.781);
+}
+
+/* home page content */
+
+.home-novels-dark {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.home-novels-light {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.home-novels-light h1 {
+  margin-top: 15px;
+  font-size: 30px;
+  color: rgb(29, 29, 29);
+}
+
+.home-novels-dark h1 {
+  margin-top: 15px;
+  font-size: 30px;
+  color: rgb(236, 236, 236);
+}
+
+.home-novels-container {
+  margin-bottom: auto;
+  width: 100%;
+  background-color: transparent;
+  height: 280px;
+}
+
+/* login container */
+
+.login-bg {
+  background: linear-gradient(
+    45deg,
+    rgba(66, 183, 245, 0.8) 0%,
+    rgba(66, 245, 189, 0.4) 100%
+  );
+  height: 700px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-container {
+  height: 500px;
+  width: 400px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px 30px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.login-title-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-input label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.form-input input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+}
+
+.form-input input:focus {
+  outline: 0;
+  border-color: #777;
+}
+
+.form-input.success input {
+  border-color: #2ecc71;
+}
+
+.form-input.error input {
+  border-color: #e74c3c;
+}
+
+.form-input i {
+  visibility: hidden;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+}
+
+.form-input small {
+  color: #e74c3c;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.form-input.error small {
+  visibility: visible;
+}
+
+.submit-form {
+  width: 100%;
+  padding: 10px 0;
+  background-color: var(--violetblueprimary);
+  color: white;
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.submit-form:hover {
+  background-color: rgb(108, 30, 252);
+}
+
+.form-redirect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.form-redirect span {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(58, 58, 58);
+}
+
+.form-redirect a {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--darkblueprimary);
 }

@@ -42,91 +42,45 @@
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
                     <i style ="color: white;" class="far fa-bookmark fa-stack-1x"></i>
                 </a>
-                <a class="nav-link-btn" href="loginPage.html">Sign in</a>
+                <a class="nav-link-btn" href="#">Sign in</a>
             </div>
         </nav>
     </div>
-    <div class="carosel">
-        <div class="carosel-item carosel-item-visible">
-            <div class="carosel-text">
-                <h1 >Discover all kinds of novels.</h1>
-                <p >You’ll find titles in every genre
-                    you love, with new ones being
-                    added frequently.</p>
+
+    <div class="login-bg">
+        <div class="login-form-container">
+            <div class="login-title-center">
+                <h1>Login</h1>         
             </div>
-            <img src="../public/img/carosel1.png" alt="">
-            
-        </div>
-        <div class="carosel-item" >
-            <div class="carosel-text">
-                <h1 >Personalized Suggestions.</h1>
-                <p >Discover novels you'll love in our wide selection, selected just for you.</p>
-            </div>
-            <img src="../public/img/carosel2.png" alt="">
-            
-        </div>
-        <div class="carosel-item" >
-            <div class="carosel-text">
-                <h1 >Simple Organizing.</h1>
-                <p >Easily plan, save and organize your novels, all with just one tap.</p>
-            </div>
-            <img src="../public/img/carosel3.png" alt="">
-            
-        </div>
-        <div class="carosel-item" >
-            <div class="carosel-text">
-                <h1 >No Ads. Your Choice.</h1>
-                <p >Acess the world of light novels at your fingertips. Best part is it's all free!</p>
-            </div>
-            <img src="../public/img/carosel4.png" alt="">
-            
-        </div>
-        <div class="carosel-actions">
-            <button id="carosel-btn-prev" aria-label="Previous slide"><</button>
-            <button id="carosel-btn-next">></button>
+            <hr style="height:2px;border-width:0;color:rgb(54, 54, 54);background-color:gray;margin: 30px 0;">
+            <form action="" class="form" id="form">
+                <div class="form-input">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Enter username" id="username" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Invalid username</small>
+                </div>
+
+                <div class="form-input">
+                    <label for="username">Password</label>
+                    <input type="password" placeholder="Enter password" id="password" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Invalid password</small>
+                </div>
+                <button class="submit-form">Sign In</button>
+                <div class="form-redirect">
+                    <span>Dont have an account yet? </span>
+                    <a href="#">Sign in</a>
+                </div>
+                
+                
+            </form>
             
         </div>
     </div>
-
     
-    <section class="container-light">
-        
-
-        <div class="home-novels-light">
-
-            <h1>Editor's Choice</h1>
-
-
-            <div class="home-novels-container">
-                
-            </div>
-
-        </div>
-
-    </section>
-    <section class="container-dark">
-
-        <div class="home-novels-dark">
-
-            <h1>Top Rated</h1>
-
-            
-
-        </div>
-        
-
-    </section>
-    <section class="container-light">
-
-        <div class="home-novels-light">
-
-            <h1>New Arrivals</h1>
-
-        </div>
-        
-
-    </section>
-
 
     <footer class= "nav-footer-container">
         <div class="nav-footer">
@@ -158,7 +112,7 @@
 
     
 
-    <script src="../public/scripts/homePage.js" ></script>
+    <script src="../public/scripts/loginPage.js"></script>
     <script src="../public/scripts/navbar.js" ></script>
 </body>
 </html>
