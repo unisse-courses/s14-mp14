@@ -5,6 +5,12 @@ const slides = document.getElementsByClassName('carosel-item');
 
 const totalSlides = slides.length;
 
+const caroselBg = document.getElementsByClassName('carosel')[0];
+
+
+
+const bgColors = ["#C40B0B", "#074988", "#575083", "#480C0C"]
+
 console.log(totalSlides);
 
 document.getElementById('carosel-btn-next').addEventListener("click", ()=> {
@@ -24,8 +30,20 @@ function updateSlide(){
 
     }
 
-
+    if (slidePos === 0) {
+        caroselBg.style.backgroundColor = '#C40B0B'
+    } else if (slidePos === 2){
+        caroselBg.style.backgroundColor = "#074988"
+    } else if (slidePos === 3){
+        caroselBg.style.backgroundColor = "#575083"
+    } else {
+        caroselBg.style.backgroundColor = "#480C0C"
+    }
+    
     slides[slidePos].classList.add('carosel-item-visible')
+
+    
+    
 
 }
 
@@ -35,9 +53,9 @@ const nextSlide = () => {
     } else {
         slidePos++;
     }
-
-    updateSlide();
     console.log(slidePos);
+    updateSlide();
+    
 }
 
 const prevSlide = () => {
@@ -47,8 +65,8 @@ const prevSlide = () => {
         slidePos--;
     }
 
-
-    updateSlide();
     console.log(slidePos);
+    updateSlide();
+    
     
 }

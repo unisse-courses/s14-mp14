@@ -97,7 +97,7 @@ body {
 
 .nav-browse-links {
   display: none;
-
+  z-index: 1;
   position: absolute;
   top: 70px;
   left: 220px;
@@ -214,7 +214,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--darkblueprimary);
+  z-index: 0;
+  background-color: rgb(196, 11, 11);
+  /* background-color: rgb(7, 73, 136); */
+  /* background-color: rgb(87, 90, 131); */
+  /*background-color: rgb(72, 12, 12); */
 }
 
 .carosel-item {
@@ -229,7 +233,7 @@ body {
 
 .carosel-item img {
   position: absolute;
-  left: 50%;
+  left: 60%;
   height: 100%;
 
   width: auto;
@@ -264,4 +268,26 @@ body {
 
 .carosel .carosel-actions button#carosel-btn-next {
   margin-right: 30px;
+}
+
+.carosel-text {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+
+.carosel-text h1 {
+  font-weight: 900;
+  color: white;
+  font-size: 35px;
+}
+
+.carosel-text p {
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  color: rgba(231, 226, 226, 0.781);
 }
