@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="carosel">
+        <div class="carosel-item carosel-item-visible">
+            <div class="carosel-text">
+                <h1 >Discover all kinds of novels.</h1>
+                <p >You’ll find titles in every genre
+                    you love, with new ones being
+                    added frequently.</p>
+            </div>
+            <img src="img/carosel1.png" alt="">
+            
+        </div>
+        <div class="carosel-item" >
+            <div class="carosel-text">
+                <h1 >Personalized Suggestions.</h1>
+                <p >Discover novels you'll love in our wide selection, selected just for you.</p>
+            </div>
+            <img src="img/carosel2.png" alt="">
+            
+        </div>
+        <div class="carosel-item" >
+            <div class="carosel-text">
+                <h1 >Simple Organizing.</h1>
+                <p >Easily plan, save and organize your novels, all with just one tap.</p>
+            </div>
+            <img src="img/carosel3.png" alt="">
+            
+        </div>
+        <div class="carosel-item" >
+            <div class="carosel-text">
+                <h1 >No Ads. Your Choice.</h1>
+                <p >Acess the world of light novels at your fingertips. Best part is it's all free!</p>
+            </div>
+            <img src="img/carosel4.png" alt="">
+            
+        </div>
+        <div class="carosel-actions">
+            <button id="carosel-btn-prev" aria-label="Previous slide"><</button>
+            <button id="carosel-btn-next">></button>
+            
+        </div>
+    </div>
+
+    
+    <section class="container-light">
+        
+
+        <div class="home-novels-light">
+
+            <h1>Editor's Choice</h1>
+
+
+            <div class="home-novels-container">
+                
+            </div>
+
+        </div>
+
+    </section>
+    <section class="container-dark">
+
+        <div class="home-novels-dark">
+
+            <h1>Top Rated</h1>
+
+            
+
+        </div>
+        
+
+    </section>
+    <section class="container-light">
+
+        <div class="home-novels-light">
+
+            <h1>New Arrivals</h1>
+
+        </div>
+        
+
+    </section>
+
+
+    <%- include('./partials/footer.ejs') %>
+
+    <script src="scripts/homePage.js" ></script>
+    
+</body>
+</html>

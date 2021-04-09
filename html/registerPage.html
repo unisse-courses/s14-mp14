@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <title>Hikari Reader: Read Light Novels Online</title>
+    <script src="https://kit.fontawesome.com/e9f791b4ab.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="nav-container">
+        <nav class="nav-bar">
+            <div class="nav-right">
+                <i style ="color: white; font-size: 30px; margin-left: 20px"class="fas fa-lightbulb"></i>
+                <h1 class="" id="nav-title">HIKARI. </h1>
+                <a class="nav-links"href="index.html">Home</a>
+                <a id = "browse-link" href="javascript:;">Browse</a>
+                    
+                    <ul class = "nav-browse-links">
+                        <li><a href="#">All Genres</a></li>
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Fantasy</a></li>
+                        <li><a href="#">Horror & Mystery</a></li>
+                        <li><a href="#">Romance</a></li>
+                        <li><a href="#">Comedy</a></li>
+                        <li><a href="#">Slice of life</a></li>
+                    </ul>
+                <a class="nav-links"href="#">About</a>
+            </div>
+            <div class="nav-left">
+                <div class="div"></div>
+                <a href="#" style ="font-size: 20px;"class="fa-stack fa-4x nav-search">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i style ="color: white;" class="fas fa-search fa-stack-1x"></i>
+                </a>
+                <a href="#" style ="font-size: 20px;"class="fa-stack fa-4x nav-write">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i style ="color: white;" class="fas fa-feather-alt fa-stack-1x"></i>
+                </a>
+                <a href="#"style ="font-size: 20px;"class="fa-stack fa-4x nav-save">
+                    <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                    <i style ="color: white;" class="far fa-bookmark fa-stack-1x"></i>
+                </a>
+                <a class="nav-link-btn" href="#">Sign in</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="login-bg">
+        <div class="register-form-container">
+            <div class="login-title-center">
+                <h1>Register</h1>         
+            </div>
+            <hr style="height:2px;border-width:0;color:rgb(54, 54, 54);background-color:gray;margin: 30px 0;">
+            <form action="" class="form" id="form">
+                <div class="form-input">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Enter username" id="username" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Invalid username</small>
+                </div>
+
+                <div class="form-input">
+                    <label for="username">Password</label>
+                    <input type="password" placeholder="Enter password" id="password" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Invalid password</small>
+                </div>
+
+                <div class="form-input">
+                    <label for="username">Password</label>
+                    <input type="password" placeholder="Confirm password" id="confirm-password" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Invalid password</small>
+                </div>
+                <button class="submit-form">Sign Up</button>
+                <div class="form-redirect">
+                    <span>Already have an account? </span>
+                    <a href="loginPage.html">Sign in</a>
+                </div>
+                
+                
+            </form>
+            
+        </div>
+    </div>
+    
+
+    <footer class= "nav-footer-container">
+        <div class="nav-footer">
+            <div class="footer-logo">
+                <div style="display: flex;">
+                    <i style ="color: white; font-size: 25px;"class="fas fa-lightbulb"></i>
+                    <h2 class="" id="nav-footer-title">HIKARI. </h2>
+                </div>
+                
+                
+                </h1>
+                <p style="color: white;">Copyright &copy; 2021</p>
+            </div>
+            <nav>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Browse</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-github fa-2x"></i></a>
+                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="../public/scripts/registerPage.js"></script>
+    <script src="../public/scripts/navbar.js" ></script>
+</body>
+</html>
