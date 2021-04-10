@@ -7,7 +7,7 @@ const GridFsStorage = require("multer-gridfs-storage");
 
 // express app
 const app = express();
-const db = ('mongodb+srv://Admin:NRcmnt28@lnreader.7e0pp.mongodb.net/test');
+const db = 'mongodb+srv://Admin:NRcmnt28@lnreader.7e0pp.mongodb.net/ln_reader?retryWrites=true&w=majority';
 const conn = mongoose.createConnection(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true
