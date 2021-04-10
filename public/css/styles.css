@@ -53,6 +53,12 @@ body {
   margin-left: 30px;
   font-weight: 600;
   display: block;
+  outline: 0px solid transparent;
+}
+
+#browse-link:hover {
+  color: white;
+  transition: all 0.2s ease-out;
 }
 
 .nav-links:hover {
@@ -92,16 +98,19 @@ body {
 }
 
 .nav-browse-links {
-  display: none;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 70px;
   left: 220px;
 }
 
-#browse-link:focus-within + .nav-browse-links {
-  display: flex;
-  flex-direction: column;
+#browse-link:focus + .nav-browse-links {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
 }
 
 .nav-browse-links li {
