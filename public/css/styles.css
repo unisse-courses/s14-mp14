@@ -99,7 +99,7 @@ body {
   left: 220px;
 }
 
-#browse-link:focus + .nav-browse-links {
+#browse-link:focus-within + .nav-browse-links {
   display: flex;
   flex-direction: column;
 }
