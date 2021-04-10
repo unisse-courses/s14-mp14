@@ -2,8 +2,9 @@ const express = require('express');
 
 // express app
 const app = express();
+//const db = mongoose.connect('mongodb://Admin:NRcmnt28@ds125068.mlab.com:25068/api-test2');
 
-const PORT = 9005;
+const PORT = process.env.PORT || 9005;
 
 app.set('view engine', 'ejs');
 
