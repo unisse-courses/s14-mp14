@@ -1,25 +1,33 @@
 const mongoose = require('mongoose');
 
 //user schema
-const UserSchema = mongoose.Schema({
-    username:{
+const NovelSchema = mongoose.Schema({
+    title:{
         type: String,
         required:true
     },
-    password:{
+    author:{
         type: String,
         required:true
     },
-    profile_pic:{
+    cover_pic:{
         type: String,
         required:false
     },
+    status:{
+        type: Boolean,
+        required:true
+    },
+    description:{
+        type: String,
+        required:true
+    },
 /*
-    favourites:{
+    genres:{
         type: Array,
         required:true
     },
-    written_books:{
+    pages:{
         type: Array,
         required:true
     },
@@ -27,4 +35,4 @@ const UserSchema = mongoose.Schema({
 });
 
 //lets you access this model outside
-const User = module.exports = mongoose.model('User',UserSchema);
+const Novel = module.exports = mongoose.model('Novel',NovelSchema);
