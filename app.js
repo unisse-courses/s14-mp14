@@ -1,12 +1,16 @@
+if(process.env.NODE_ENV !=='production'){
+    require('dotenv').config()
+}
 const express = require('express');
-const crypto = require("crypto");
-const path = require("path");
+//const crypto = require("crypto");
+//const path = require("path");
 const mongoose = require("mongoose");
-const multer = require("multer");
-const GridFsStorage = require("multer-gridfs-storage");
+//const multer = require("multer");
+//const GridFsStorage = require("multer-gridfs-storage");
 
 // express app
 const app = express();
+/*
 const db = 'mongodb+srv://Admin:NRcmnt28@lnreader.7e0pp.mongodb.net/ln_reader?retryWrites=true&w=majority';
 const conn = mongoose.createConnection(db, {
     useNewUrlParser: true,
@@ -20,6 +24,12 @@ conn.once("open", () => {
     });
   });
   //https://dev.to/shubhambattoo/uploading-files-to-mongodb-with-gridfs-and-multer-using-nodejs-5aed
+*/
+mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true,useUnifiedTopology: true})
+const db = mongoose.connection
+db.on('error',error => console.error(error))
+db.on('open',() => console.log('connected to db!'))
+
 const PORT = process.env.PORT || 9005;
 
 app.use(express.json());
