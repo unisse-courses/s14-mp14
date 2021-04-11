@@ -7,6 +7,12 @@ const express = require('express');
 const mongoose = require("mongoose");
 //const multer = require("multer");
 //const GridFsStorage = require("multer-gridfs-storage");
+const session = require('express-session');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+
+
 
 // express app
 const app = express();
