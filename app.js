@@ -30,7 +30,7 @@ const db = mongoose.connection
 db.on('error',error => console.error(error))
 db.on('open',() => console.log('connected to db!'))
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 443;
 
 app.use(express.json());
 app.set('view engine', 'ejs');
