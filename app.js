@@ -13,9 +13,10 @@ const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 
 
-
 // express app
 const app = express();
+
+const PORT = process.env.PORT || 9005;
 /*
 const db = 'mongodb+srv://Admin:NRcmnt28@lnreader.7e0pp.mongodb.net/ln_reader?retryWrites=true&w=majority';
 const conn = mongoose.createConnection(db, {
@@ -31,22 +32,28 @@ conn.once("open", () => {
   });
   //https://dev.to/shubhambattoo/uploading-files-to-mongodb-with-gridfs-and-multer-using-nodejs-5aed
 */
-mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true,useUnifiedTopology: true})
+
+//db 
+mongoose.connect(process.env.DATABASE_URL,
+    {useNewUrlParser: true,useUnifiedTopology: true
+});
+
 const db = mongoose.connection
 db.on('error',error => console.error(error))
 db.on('open',() => console.log('connected to db!'))
 
-const PORT = process.env.PORT || 9005;
 
+//middleware
 app.use(express.json());
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({ extended: false}));
 
 
 app.listen(PORT, () =>{
     console.log('listening at port ' + PORT);
 })
 
-app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', (req, res) => {
