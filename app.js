@@ -44,7 +44,8 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.send({ ok:true});
+    //res.render('index');
 });
 
 app.get('/login', (req, res) => {
