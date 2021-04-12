@@ -11,7 +11,8 @@ const UserSchema = mongoose.Schema({
         required:true
     },
     profile_pic:{
-        type: String,
+        data: Buffer,
+        contentType: String,
         required:false
     },
 /*

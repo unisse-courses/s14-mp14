@@ -3,9 +3,12 @@ if(process.env.NODE_ENV !=='production'){
 }
 const express = require('express');
 //const crypto = require("crypto");
-//const path = require("path");
+//https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const path = require("path");
 const mongoose = require("mongoose");
-//const multer = require("multer");
+const multer = require("multer");
 //const GridFsStorage = require("multer-gridfs-storage");
 const session = require('express-session');
 const passport = require('passport');
@@ -48,7 +51,8 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: false}));
-
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.listen(PORT, () =>{
     console.log('listening at port ' + PORT);

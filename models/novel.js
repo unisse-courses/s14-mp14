@@ -11,7 +11,8 @@ const NovelSchema = mongoose.Schema({
         required:true
     },
     cover_pic:{
-        type: String,
+        data: Buffer,
+        contentType: String,
         required:false
     },
     status:{
