@@ -15,16 +15,8 @@ const UserSchema = mongoose.Schema({
         contentType: String,
         required:false
     },
-/*
-    favourites:{
-        type: Array,
-        required:true
-    },
-    written_books:{
-        type: Array,
-        required:true
-    },
-*/
+    favourites:{type: [Schema.Types.Novel]},
+    written_books:{type: [Schema.Types.Novel]}
 });
 
 //lets you access this model outside

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const timestamps    = require('mongoose-timestamp');
 //user schema
 const NovelSchema = mongoose.Schema({
     title:{
@@ -23,17 +23,12 @@ const NovelSchema = mongoose.Schema({
         type: String,
         required:true
     },
-/*
-    genres:{
-        type: Array,
-        required:true
-    },
-    pages:{
-        type: Array,
-        required:true
-    },
-*/
-});
 
+    genres:{type: [String], required: true},
+
+    pages:{type: [Schema.Types.Page]},
+
+});
+cateorySchema.plugin(timestamps); // automatically adds createdAt and updatedAt timestamps
 //lets you access this model outside
 const Novel = module.exports = mongoose.model('Novel',NovelSchema);

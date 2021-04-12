@@ -6,18 +6,8 @@ const PageSchema = mongoose.Schema({
         type: String,
         required:false
     },
-    /*
-    book:{
-        type: String,
-        required:true
-    },
-    */
-/*
-    page_num:{
-        type: ,
-        required:true
-    },
-    */
+    body:{type: String, required: true},
+
 });
 
 //lets you access this model outside
