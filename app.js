@@ -61,17 +61,34 @@ app.listen(PORT, () =>{
 
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index',{
+        style:"css/styles.css"
+    });
 });
 
 app.get('/login', (req, res) => {
-    res.render('loginPage');
+    res.render('loginPage',{
+        style:"css/styles.css"
+    });
 })
 
 app.get('/register', (req, res) => {
-    res.render('registerPage');
+    res.render('registerPage',{
+        style:"css/styles.css"
+    });
+})
+
+app.get('/browse', (req, res) => {
+    
+    res.render('genrePage',{
+        style:"css/genreStyles.css"
+    });
+    
 })
 
 app.use((req, res) => {
-    res.status(404).render('errorPage');
+    res.status(404).render('errorPage',{
+        style:"css/genreStyles.css"
+
+    });
 });
