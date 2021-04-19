@@ -38,25 +38,27 @@ conn.once("open", () => {
 
 //db 
 mongoose.connect(process.env.DATABASE_URL,
-    {useNewUrlParser: true,useUnifiedTopology: true
-});
+    {useNewUrlParser: true,useUnifiedTopology: true})
+    .then(()=> console.log('connected to db!'))
+    .then(app.listen(PORT, () =>{
+        console.log('listening at port ' + PORT);
+    }))
+    .catch(err => console.error(error));
 
 const db = mongoose.connection
-db.on('error',error => console.error(error))
-db.on('open',() => console.log('connected to db!'))
+
+
 
 
 //middleware
 app.use(express.json());
 app.set('view engine', 'ejs');
+//static files
 app.use(express.static(__dirname + '/public'));
-app.use(express.urlencoded({ extended: false}));
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
-app.listen(PORT, () =>{
-    console.log('listening at port ' + PORT);
-})
+app.use(express.urlencoded({ extended: false}));
+
+
 
 
 
@@ -76,6 +78,13 @@ app.get('/register', (req, res) => {
     res.render('registerPage',{
         style:"css/styles.css"
     });
+})
+
+app.post('/register', (req, res) => {
+    const {name, password, password2} = req.body;
+    console.log(req.body);
+    res.send('hello')
+    
 })
 
 app.get('/browse', (req, res) => {

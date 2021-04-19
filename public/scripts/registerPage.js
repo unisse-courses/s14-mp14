@@ -1,3 +1,5 @@
+
+/*
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 
@@ -69,3 +71,5 @@ const setSuccessFor = (input) => {
 	const formControl = input.parentElement;
 	formControl.className = 'form-input success';
 }
+
+*/
