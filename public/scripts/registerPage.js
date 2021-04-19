@@ -1,13 +1,15 @@
 
-/*
+
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 
 const password = document.getElementById('password');
 const password2 = document.getElementById('confirm-password');
 
+
+
 form.addEventListener('submit', e => {
-	e.preventDefault();
+	//e.preventDefault();
 	
 	checkInputs();
 });
@@ -72,4 +74,3 @@ const setSuccessFor = (input) => {
 	formControl.className = 'form-input success';
 }
 
-*/
