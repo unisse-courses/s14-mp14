@@ -364,12 +364,12 @@ body {
 }
 
 .login-form-container {
-  height: 500px;
+  height: auto;
   width: 400px;
   background-color: white;
   border-radius: 15px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px 30px;
+  padding: 40px 30px;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -485,7 +485,7 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-/* error page */
+/* error page * and messages */
 
 .error-404-msg {
   display: flex;
@@ -516,4 +516,9 @@ body {
 
 .error-404-msg a:hover {
   background-color: rgb(108, 30, 252);
+}
+
+.sucess-msg {
+  color: rgb(1, 145, 1);
+  text-align: center;
 }

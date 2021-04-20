@@ -63,7 +63,21 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.urlencoded({ extended: false}));
 
+//express-session
 
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+});
 
 
 
@@ -135,9 +149,8 @@ app.post('/register', (req, res) => {
 
                         newUser.save()
                         .then(user => {
-                            res.redirect('loginPage',{
-                                style:"css/styles.css"
-                            });
+                            req.flash('success_msg', 'you are now registered and can login');
+                            res.redirect('/login');
                         })
                         .catch(err => console.log(err));
                     }))
@@ -145,7 +158,7 @@ app.post('/register', (req, res) => {
             })
     
         
-    }
+    }   
     
 })
 

@@ -1,5 +1,21 @@
 <% if (typeof errors != 'undefined') { %> 
     <% errors.forEach(error => { %>
-        <%= error.msg %>
+        <div style="color: red;"><%= error.msg %></div>
     <% }); %>
+<%} %>
+
+<% if (success_msg != '') { %>
+
+    
+
+    <div class="sucess-msg"><%= success_msg %></div>
+
+<%} %>
+
+<% if (error_msg != '') { %>
+
+    
+
+    <div class="sucess-msg" style="color: red;"><%= error_msg %></div>
+
 <%} %>
