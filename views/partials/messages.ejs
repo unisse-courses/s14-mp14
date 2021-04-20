@@ -5,17 +5,13 @@
 <%} %>
 
 <% if (success_msg != '') { %>
-
-    
-
     <div class="sucess-msg"><%= success_msg %></div>
-
 <%} %>
 
 <% if (error_msg != '') { %>
-
-    
-
     <div class="sucess-msg" style="color: red;"><%= error_msg %></div>
+<%} %>
 
+<% if (error != '') { %>
+    <div class="sucess-msg" style="color: red;"><%= error %></div>
 <%} %>

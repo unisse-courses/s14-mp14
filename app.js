@@ -16,8 +16,9 @@ const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 
-// user models
+require('./config/passport')(passport);
 
+// user models
 const User = require('./models/user');
 
 
@@ -71,11 +72,16 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
     next();
 });
 
@@ -99,6 +105,7 @@ app.get('/register', (req, res) => {
     });
 })
 
+//register
 app.post('/register', (req, res) => {
     const {username, password, password2} = req.body;
     
@@ -142,11 +149,9 @@ app.post('/register', (req, res) => {
 
                     bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) =>{
                         if (err) throw err;
-
                         // hasing the password
                         newUser.password = hash;
                         //save user
-
                         newUser.save()
                         .then(user => {
                             req.flash('success_msg', 'you are now registered and can login');
@@ -156,11 +161,16 @@ app.post('/register', (req, res) => {
                     }))
                 }
             })
-    
-        
-    }   
-    
+    }     
 })
+
+app.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/login',
+      failureFlash: true
+    })(req, res, next);
+  });
 
 app.get('/browse', (req, res) => {
     
