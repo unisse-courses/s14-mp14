@@ -180,6 +180,14 @@ app.get('/browse', (req, res) => {
     
 })
 
+app.get('/profile', (req, res) => {
+    
+    res.render('profilePage',{
+        style:"css/profileStyles.css"
+    });
+    
+})
+
 app.use((req, res) => {
     res.status(404).render('errorPage',{
         style:"css/genreStyles.css"
