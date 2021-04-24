@@ -180,6 +180,15 @@ app.get('/browse', (req, res) => {
     
 })
 
+app.get('/search', (req, res) => {
+    
+    res.render('searchPage',{
+        style:"css/searchStyles.css"
+    });
+    
+})
+
+
 app.get('/profile', (req, res) => {
     
     res.render('profilePage',{
