@@ -23,7 +23,14 @@
                 <i class="fa fa-circle fa-stack-2x icon-background"></i>
                 <i style ="color: white;" class="far fa-bookmark fa-stack-1x"></i>
             </a>
-            <a class="nav-link-btn" href="/login">Sign in</a>
+            <% if( isAuthenticated){ %>
+                <a class="nav-link-btn" href="/logout">Sign out</a>
+            <% } else{ %>  
+                <a class="nav-link-btn" href="/login">Sign in</a>
+            <% } %>
+            
+            
         </div>
     </nav>
 </div>
+<script src="scripts/navbar.js"></script>
