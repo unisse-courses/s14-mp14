@@ -203,7 +203,7 @@ app.get('/search', (req, res) => {
 app.get('/profile', ensureAuthenticated, (req, res) => {
     
     res.render('profilePage',{
-        style:"css/profileStyles.css"
+        style:"css/profileStyles.css",  user: req.user,
     });
     
 })
