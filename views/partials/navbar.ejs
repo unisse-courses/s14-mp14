@@ -10,7 +10,7 @@
             <a class="nav-links"href="#">About</a>
         </div>
         <div class="nav-left">
-            <div class="div"></div>
+            
             <a href="search" style ="font-size: 20px;"class="fa-stack fa-4x nav-search">
                 <i class="fa fa-circle fa-stack-2x icon-background"></i>
                 <i style ="color: white;" class="fas fa-search fa-stack-1x"></i>
@@ -23,7 +23,12 @@
                 <i class="fa fa-circle fa-stack-2x icon-background"></i>
                 <i style ="color: white;" class="far fa-bookmark fa-stack-1x"></i>
             </a>
+            
             <% if( isAuthenticated){ %>
+                
+                <a href="/profile" class="profile-link">
+                    <img  src="img/default_profile.jpg" alt="">
+                </a>
                 <a class="nav-link-btn" href="/logout">Sign out</a>
             <% } else{ %>  
                 <a class="nav-link-btn" href="/login">Sign in</a>

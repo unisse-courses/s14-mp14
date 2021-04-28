@@ -32,6 +32,11 @@ body {
 .nav-right {
   display: flex;
 }
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
 #nav-title {
   color: white;
   font-weight: 800;
@@ -83,6 +88,13 @@ body {
 
 .nav-write:hover {
   color: rgba(128, 128, 128, 0.548);
+}
+
+.profile-link img {
+  margin-right: 20px;
+  height: 35px;
+  width: auto;
+  border-radius: 50%;
 }
 
 .nav-link-btn {

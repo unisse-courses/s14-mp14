@@ -15,6 +15,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+const {ensureAuthenticated} = require('./config/auth');
 
 require('./config/passport')(passport);
 
@@ -177,6 +178,11 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
+  app.get('/logout', (req, res) =>{
+      req.logout();
+      res.redirect('/');
+  })
+
 app.get('/browse', (req, res) => {
     
     res.render('genrePage',{
@@ -194,7 +200,7 @@ app.get('/search', (req, res) => {
 })
 
 
-app.get('/profile', (req, res) => {
+app.get('/profile', ensureAuthenticated, (req, res) => {
     
     res.render('profilePage',{
         style:"css/profileStyles.css"
