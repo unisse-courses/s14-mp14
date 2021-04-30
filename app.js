@@ -186,7 +186,7 @@ app.post('/login', (req, res, next) => {
 app.get('/browse', (req, res) => {
     
     res.render('genrePage',{
-        style:"css/genreStyles.css"
+        style:"css/styles.css"
     });
     
 })
@@ -194,7 +194,7 @@ app.get('/browse', (req, res) => {
 app.get('/search', (req, res) => {
     
     res.render('searchPage',{
-        style:"css/searchStyles.css"
+        style:"css/styles.css"
     });
     
 })
@@ -203,14 +203,14 @@ app.get('/search', (req, res) => {
 app.get('/profile', ensureAuthenticated, (req, res) => {
     
     res.render('profilePage',{
-        style:"css/profileStyles.css",  user: req.user,
+        style:"css/styles.css",  user: req.user,
     });
     
 })
 
 app.use((req, res) => {
     res.status(404).render('errorPage',{
-        style:"css/genreStyles.css"
+        style:"css/styles.css"
 
     });
 });
