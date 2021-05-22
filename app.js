@@ -200,6 +200,15 @@ app.get('/search', (req, res) => {
 })
 
 
+app.get('/create', (req, res) => {
+    
+    res.render('createNovel',{
+        style:"css/styles.css",
+    });
+    
+})
+
+
 app.get('/profile', ensureAuthenticated, (req, res) => {
     
     res.render('profilePage',{
