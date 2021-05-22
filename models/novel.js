@@ -15,18 +15,20 @@ const NovelSchema = mongoose.Schema({
         contentType: String,
         required:false
     },
+    /*
     status:{
         type: Boolean,
         required:true
     },
-    description:{
+    */
+    content:{
         type: String,
         required:true
     },
 
     genres:{type: [String], required: true},
 
-    pages:{type: [Schema.Types.Page]},
+    //pages:{type: [Schema.Types.Page]},
 
 });
 cateorySchema.plugin(timestamps); // automatically adds createdAt and updatedAt timestamps
