@@ -19,9 +19,31 @@ const {ensureAuthenticated} = require('./config/auth');
 
 require('./config/passport')(passport);
 
-// user models
+// models
 const User = require('./models/user');
 
+const Novel = require('./models/novel');
+
+// image store
+const storage = multer.diskStorage({
+    //destination for files
+    destination: function (request, file, callback) {
+      callback(null, './public/img');
+    },
+  
+    //add back the extension
+    filename: function (request, file, callback) {
+      callback(null, Date.now() + file.originalname);
+    },
+  });
+  
+  //upload parameters for multer
+  const upload = multer({
+    storage: storage,
+    limits: {
+      fieldSize: 1024 * 1024 * 3,
+    },
+  });
 
 // express app
 const app = express();
@@ -200,9 +222,36 @@ app.get('/search', (req, res) => {
 })
 
 
-app.get('/create', (req, res) => {
+app.get('/create',  ensureAuthenticated, (req, res) => {
+
     
     res.render('createNovel',{
+        style:"css/styles.css",
+    });
+    
+})
+
+app.post('/create', upload.single('image'), ensureAuthenticated, (req, res) => {
+    console.log(req.file)
+    const author = req.user.username;
+
+    //const cover_pic = req.file.filename;
+
+    const {title, genre, content} = req.body;
+
+    const uploadNovel = new Novel({title, author, cover_pic:'placeholder.jpg', content, genre})
+
+    console.log(genre);
+
+    console.log(uploadNovel);
+    
+    
+    
+})
+
+app.get('/test', (req, res) => {
+    
+    res.render('test',{
         style:"css/styles.css",
     });
     

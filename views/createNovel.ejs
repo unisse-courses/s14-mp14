@@ -8,18 +8,25 @@
     <div class="create-novel-bg">
         <div class="novel-form-container">
             <h1>New Novel</h1>
-            <form action="" class="novel-form" id="novel-form" method="POST">
+            <form action="/create" class="novel-form" id="novel-form" method="POST">
                 <div class="novel-form-input">
 
-                    <label for="novelname">Novel Name</label>
-                    <input type="text" placeholder="Enter novel name"  id="novelname" name="novelname"  />
+                    <label for  ="title">Novel title</label>
+                    <input type="text" placeholder="Enter novel name"  id="title" name="title"  />
 
                 </div>
 
+            
+                <div style="width: 300px; margin-top: 20px;" >
+                    <label for="image>Novel Image</label>
+                    <input type="file" id="image" name="image" class="filepond">
+                </div>
+
+   
                 <div class="novel-form-input">
 
                     <label for="genre">Novel Genre</label>
-                    <select name="genre" id="genre">
+                    <select name="genre" id="genre" name="genre">
                         <option value="Action">Action</option>
                         <option value="Fantasy">Fantasy</option>
                         <option value="Horror & Mystery">Horror & Mystery</option>           
@@ -32,12 +39,16 @@
 
                 <div class="novel-form-input">
 
-                    <label for="content">Novel Story</label>
-                    <textarea name="" id="content" cols="30" rows="10" class="content"></textarea>
+                    <label for="content">Novel Content</label>
+                    <textarea  cols="30" rows="10" class="content" name="content" id="content"></textarea>
 
                 </div>
 
-                <button class="submit-form" style="width: 300px;">Create Novel</button>
+                
+
+                <button class="submit-form" style="width: 300px;"">Create Novel</button>
+
+                
                 
             </form>
          </div>
