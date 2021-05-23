@@ -2,8 +2,7 @@ if(process.env.NODE_ENV !=='production'){
     require('dotenv').config()
 }
 const express = require('express');
-//const crypto = require("crypto");
-//https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
+
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require("path");
@@ -17,6 +16,8 @@ const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const {ensureAuthenticated} = require('./config/auth');
 
+const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+
 require('./config/passport')(passport);
 
 // models
@@ -25,25 +26,16 @@ const User = require('./models/user');
 const Novel = require('./models/novel');
 
 // image store
-const storage = multer.diskStorage({
-    //destination for files
-    destination: function (request, file, callback) {
-      callback(null, './public/img');
-    },
-  
-    //add back the extension
-    filename: function (request, file, callback) {
-      callback(null, Date.now() + file.originalname);
-    },
-  });
-  
-  //upload parameters for multer
-  const upload = multer({
-    storage: storage,
-    limits: {
-      fieldSize: 1024 * 1024 * 3,
-    },
-  });
+
+function saveCover(book, coverEncoded) {
+    if (coverEncoded == null) return
+    const cover = JSON.parse(coverEncoded)
+    if (cover != null/* && imageMimeTypes.includes(cover.type)*/) {
+      book.cover_pic = new Buffer.from(cover.data, 'base64')
+      //book.coverImageType = cover.type
+    }
+  }
+
 
 // express app
 const app = express();
@@ -80,12 +72,17 @@ const db = mongoose.connection
 
 
 //middleware
-app.use(express.json());
+//app.use(express.json());
+app.use(express.json({limit: '200mb'}));
 app.set('view engine', 'ejs');
 //static files
 app.use(express.static(__dirname + '/public'));
 
-app.use(express.urlencoded({ extended: false}));
+//app.use(express.urlencoded({ extended: false}));
+
+app.use(express.urlencoded({limit: '200mb', extended: true}));
+
+
 
 //express-session
 
@@ -231,19 +228,24 @@ app.get('/create',  ensureAuthenticated, (req, res) => {
     
 })
 
-app.post('/create', upload.single('image'), ensureAuthenticated, (req, res) => {
-    console.log(req.file)
-    const author = req.user.username;
+app.post('/create', ensureAuthenticated, async (req, res) => {
+    
+    const {genre} = req.body;
 
-    //const cover_pic = req.file.filename;
+    let uploadNovel = new Novel({title: req.body.title, author: req.user.username, content: req.body.content, genre: genre})
 
-    const {title, genre, content} = req.body;
-
-    const uploadNovel = new Novel({title, author, cover_pic:'placeholder.jpg', content, genre})
-
-    console.log(genre);
+    
+    saveCover(uploadNovel, req.body.image)
 
     console.log(uploadNovel);
+
+    try {
+        uploadNovel = await uploadNovel.save();
+    
+        res.redirect('/');
+      } catch (error) {
+        console.log(error);
+      }
     
     
     

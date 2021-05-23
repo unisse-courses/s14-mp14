@@ -11,9 +11,20 @@ const NovelSchema = mongoose.Schema({
         required:true
     },
     cover_pic:{
+        type: Buffer,
+        required: true
+        /*
         type: String,
         default: 'placeholder.jpg'
+        */
     },
+    /*
+    cover_type: {
+        type: String,
+        required: true
+      },
+
+      */
     /*
     status:{
         type: Boolean,
