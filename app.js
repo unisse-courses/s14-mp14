@@ -36,6 +36,17 @@ function saveCover(book, coverEncoded) {
     }
   }
 
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+ 
+var upload = multer({ storage: storage });
+
 
 // express app
 const app = express();
@@ -203,10 +214,25 @@ app.post('/login', (req, res, next) => {
   })
 
 app.get('/browse', (req, res) => {
+    /*
+    Novel.find({}, (err, novels) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+        else {
+            
+            res.render('genrePage',{
+                style:"css/styles.css"
+            }, { novels: novels });
+        }
+    });
+    */
     
     res.render('genrePage',{
         style:"css/styles.css"
     });
+    
     
 })
 
@@ -248,14 +274,6 @@ app.post('/create', ensureAuthenticated, async (req, res) => {
       }
     
     
-    
-})
-
-app.get('/test', (req, res) => {
-    
-    res.render('test',{
-        style:"css/styles.css",
-    });
     
 })
 

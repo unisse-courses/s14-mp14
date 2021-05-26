@@ -683,7 +683,56 @@ body {
   /*height: 700px;*/
   width: 100%;
   height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
 }
+
+.card-container {
+  height: auto;
+  width: 90%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 40px 30px;
+  font-family: "Montserrat", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.novel-card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 180px;
+}
+
+.novel-card img {
+  height: 300px;
+  width: 180px;
+}
+
+.novel-card p {
+  margin-top: 5px;
+}
+.novel-genre {
+  margin-top: 5px;
+  background-color: #777;
+  padding: 5px 12px;
+  border-radius: 18px;
+}
+.novel-card a {
+  text-decoration: none;
+  color: black;
+  margin-top: 5px;
+  padding: 10px 10px;
+  background-color: rgb(236, 233, 40);
+}
+/*
 .genre-bg .cards {
   margin: 0 auto;
   max-width: 1000px;
@@ -691,6 +740,10 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
   gap: 20px;
 }
+
+
+
+/*
 .genre-bg .card {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
@@ -745,6 +798,7 @@ body {
 .card__link:hover {
   text-decoration: underline;
 }
+*/
 
 #genre-title {
   color: white;
