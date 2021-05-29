@@ -8,25 +8,25 @@
     <div class="create-novel-bg">
         <div class="novel-form-container">
             <h1>New Novel</h1>
-            <form action="/create" class="novel-form" id="novel-form" method="POST">
+            <form action="/create" class="novel-form" id="novel-form" method="POST" enctype="multipart/form-data">
                 <div class="novel-form-input">
 
                     <label for  ="title">Novel title</label>
-                    <input type="text" placeholder="Enter novel name"  id="title" name="title"  />
+                    <input type="text" placeholder="Enter novel name"  id="title" name="title"  required>
 
                 </div>
 
             
                 <div style="width: 300px; margin-top: 20px;" >
-                    <label for="image>Novel Image</label>
-                    <input type="file" id="image" name="image" class="filepond">
+                    <label for="cover_image">Novel Image</label>
+                    <input type="file" id="cover_image" name="cover_image"  required>
                 </div>
 
    
                 <div class="novel-form-input">
 
                     <label for="genre">Novel Genre</label>
-                    <select name="genre" id="genre" name="genre">
+                    <select name="genre" id="genre" name="genre" required>
                         <option value="Action">Action</option>
                         <option value="Fantasy">Fantasy</option>
                         <option value="Horror & Mystery">Horror & Mystery</option>           
@@ -40,13 +40,13 @@
                 <div class="novel-form-input">
 
                     <label for="content">Novel Content</label>
-                    <textarea  cols="30" rows="10" class="content" name="content" id="content"></textarea>
+                    <textarea  cols="30" rows="10" class="content" name="content" id="content" required></textarea>
 
                 </div>
 
                 
 
-                <button class="submit-form" style="width: 300px;"">Create Novel</button>
+                <button class="submit-form" style="width: 300px;">Create Novel</button>
 
                 
                 

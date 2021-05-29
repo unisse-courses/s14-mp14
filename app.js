@@ -8,6 +8,8 @@ const fs = require('fs');
 const path = require("path");
 const mongoose = require("mongoose");
 const multer = require("multer");
+
+
 //const GridFsStorage = require("multer-gridfs-storage");
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -24,18 +26,26 @@ require('./config/passport')(passport);
 const User = require('./models/user');
 
 const Novel = require('./models/novel');
+const { error } = require('console');
 
 // image store
+const uploadPath = path.join('public', Novel.coverImageBasePath);
 
-function saveCover(book, coverEncoded) {
-    if (coverEncoded == null) return
-    const cover = JSON.parse(coverEncoded)
-    if (cover != null/* && imageMimeTypes.includes(cover.type)*/) {
-      book.cover_pic = new Buffer.from(cover.data, 'base64')
-      //book.coverImageType = cover.type
-    }
-  }
+const upload = multer({
+    dest: 'public/uploads',
+    fileFilter: (req, file, callback) => {
+        callback(null, imageMimeTypes.includes(file.mimetype))
+        console.log(uploadPath);
+    },
+    filename: function (request, file, callback) {
+        console.log(file);
+          callback(null, Date.now() + path.extname(file.originalname));
+        },
+    
+})
 
+
+/*
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads')
@@ -46,8 +56,28 @@ var storage = multer.diskStorage({
 });
  
 var upload = multer({ storage: storage });
-
-
+*/
+/*
+const storage = multer.diskStorage({
+    
+    destination: function (request, file, callback) {
+      callback(null, uploadPath);
+    },
+    
+    
+    
+    filename: function (request, file, callback) {
+    console.log(file);
+      callback(null, Date.now() + path.extname(file.originalname));
+    },
+  });
+  
+  
+  const upload = multer({
+    storage: storage,
+    
+  });
+*/
 // express app
 const app = express();
 
@@ -91,7 +121,7 @@ app.use(express.static(__dirname + '/public'));
 
 //app.use(express.urlencoded({ extended: false}));
 
-app.use(express.urlencoded({limit: '200mb', extended: true}));
+app.use(express.urlencoded({limit: '20mb', extended: true}));
 
 
 
@@ -213,7 +243,10 @@ app.post('/login', (req, res, next) => {
       res.redirect('/');
   })
 
-app.get('/browse', (req, res) => {
+app.get('/browse', async (req, res) => {
+
+    //let query = Novel.find();
+    //const novels = await query.exec()
     /*
     Novel.find({}, (err, novels) => {
         if (err) {
@@ -228,10 +261,26 @@ app.get('/browse', (req, res) => {
         }
     });
     */
+   
+    try {
+        const novels = await Novel.find({});
+        res.render('genrePage',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.redirect('/')
+    }
     
+    
+    console.log(novels);
+    /*
     res.render('genrePage',{
         style:"css/styles.css"
-    });
+    }, {novels: novels});
+
+    */
+    
     
     
 })
@@ -254,28 +303,44 @@ app.get('/create',  ensureAuthenticated, (req, res) => {
     
 })
 
-app.post('/create', ensureAuthenticated, async (req, res) => {
-    
+app.post('/create', upload.single("cover_image"), ensureAuthenticated, async (req, res) => {
+    //let filename;
+    const fileName = req.file != null ? req.file.filename : null;
+    console.log(fileName);
+    /*
+    if (!req.file) {
+        console.log(error);
+     } else {
+        filename = req.file.filename
+     }
+     */
     const {genre} = req.body;
 
-    let uploadNovel = new Novel({title: req.body.title, author: req.user.username, content: req.body.content, genre: genre})
+    let uploadNovel = new Novel({title: req.body.title, author: req.user.username,cover_pic: fileName, content: req.body.content, genre: genre})
 
     
-    saveCover(uploadNovel, req.body.image)
-
+    //saveCover(uploadNovel, req.body.image)
+    //console.log(req.file);
     console.log(uploadNovel);
-
+    
     try {
         uploadNovel = await uploadNovel.save();
     
         res.redirect('/');
       } catch (error) {
+          if(uploadNovel.cover_pic != null) {
+              removeCover(uploadNovel.cover_pic);
+          }
         console.log(error);
-      }
-    
-    
+      } 
     
 })
+
+function removeCover(fileName){
+    fs.unlink(path.join(uploadPath), err => {
+        console.log(err);
+    });
+}
 
 
 app.get('/profile', ensureAuthenticated, (req, res) => {
