@@ -208,7 +208,7 @@ app.get('/browse', async (req, res) => {
       } catch {
         res.redirect('/')
     }
-    console.log(novels);
+    
            
 })
 
@@ -303,13 +303,47 @@ app.get('/slice', async (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-    
+
     res.render('searchPage',{
         style:"css/styles.css"
-    });
+    },);
+    /*
+    try {
+        let searchString = req.search;
+        const novels = await Novel.find({$text: {$search: searchString}});
+        res.render('searchPage',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.render('searchPage',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+    }
+    */
     
 })
+/*
+app.get('/search/:id', (req, res) => {
 
+    const id = req.params.id;
+    Novel.findById(id).then(result => {
+        res.render('detailsNovel',{
+            style:"css/styles.css",
+            novel: result,
+            
+
+        });
+
+    }).catch(err => {
+        console.log(err);
+    })
+    
+    
+    
+})
+*/
 
 app.get('/create',  ensureAuthenticated, (req, res) => {
 
@@ -353,11 +387,28 @@ function removeCover(fileName){
 }
 
 
-app.get('/profile', ensureAuthenticated, (req, res) => {
-    
+app.get('/profile', ensureAuthenticated, async (req, res) => {
+    /*
     res.render('profilePage',{
         style:"css/styles.css",  user: req.user,
     });
+    */
+    try {
+        let userSearch = req.user.username;
+        
+        const novels = await Novel.find({author: userSearch});
+        res.render('profilePage',{
+            style:"css/styles.css",
+            novels: novels,
+            user: req.user
+        },);
+      } catch {
+          
+          res.render('profilePage',{
+            style:"css/styles.css",
+            user: req.user
+        },);
+    }
     
 })
 
@@ -380,6 +431,37 @@ app.get('/novel/:id', (req, res) => {
     
     
 })
+
+app.get('/novelauth/:id',  ensureAuthenticated, (req, res) => {
+
+    const id = req.params.id;
+    Novel.findById(id).then(result => {
+        res.render('detailAuthorNovel',{
+            style:"css/styles.css",
+            novel: result,
+            
+
+        });
+
+    }).catch(err => {
+        console.log(err);
+    })
+    
+    
+    
+})
+
+app.delete('/novelauth/:id',  ensureAuthenticated, (req, res) => {
+    const id = req.params.id;
+    
+    Novel.findByIdAndDelete(id)
+      .then(result => {
+        res.json({ redirect: '/profile' });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 
 
 app.use((req, res) => {

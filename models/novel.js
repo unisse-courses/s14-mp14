@@ -54,6 +54,8 @@ const NovelSchema = mongoose.Schema({
 
 });
 
+NovelSchema.index({title: 'text', author: 'text'});
+
 NovelSchema.virtual('coverImagePath').get(function() {
     if (this.cover_pic != null) {
       return path.join('/', coverImageBasePath, this.cover_pic)

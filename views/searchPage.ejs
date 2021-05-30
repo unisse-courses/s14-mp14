@@ -6,16 +6,20 @@
     <div class="search-bg">
     <div class="search-box"> 
     <table class="elementsContainer">
-        <tr>
-            <td>
-                <input type="text" class="search-txt"  placeholder="Search For Novel">
-            </td>
-            <td>
-                <a class="search-btn" href=#>
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </a>
-            </td>
-        </tr>
+        <form action="/search" method="GET">
+
+            <tr>
+                <td>
+                    <input type="text" class="search-txt" name="search"  placeholder="Search For Novel">
+                </td>
+                <td>
+                    <button class="search-btn"  value="search" type="submit">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </form>
+        
     </table>
     
 </div>
@@ -23,6 +27,8 @@
 <div style="display: flex; align-items: center; justify-content: center;">
     
     <div class="card-container" style="margin-top: 30px">
+
+        
     </div>
 </div>
 

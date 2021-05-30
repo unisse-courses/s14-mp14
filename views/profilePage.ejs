@@ -21,11 +21,25 @@
     
     </div>
     <div class="box-container">
-        <h1>Novels Authored</h1>
+        <h1 style="margin-bottom: 30px;">Novels Authored</h1>
         
-        <div class="lists">
-            
-            
+        <div class="profile-card-container">
+
+            <% novels.forEach(novel=>{ %>
+
+                <div class="novel-card" style="margin-bottom: 10px;">
+                    <img src="/uploads/<%= novel.cover_pic%>">
+                    <p><%= novel.title %></p>
+                    
+                    <div class="novel-genre">
+                        <%= novel.genre %>
+                    </div>
+                    <a href="/novelauth/<%= novel._id%>">Read Now</a>
+                    
+                </div>
+               
+                <% }) %>
+
         </div>
     </div>
 </div>
