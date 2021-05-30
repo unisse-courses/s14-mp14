@@ -1,4 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap");
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="/public/css/styles.css">
+        <title>Hikari Reader: Read Light Novels Online</title>
+        <script src="https://kit.fontawesome.com/e9f791b4ab.js" crossorigin="anonymous"></script>
+    
+        
+        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+        <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+        <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+        <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+        <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+        <script defer src="/scripts/fileUpload.js"></script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap");
 
 :root {
   --darkblueprimary: rgb(1, 1, 39);
@@ -567,9 +588,9 @@ body {
   width: 50%;
   height: 42px;
   background-color: white;
-  border: 2px solid grey;
+  border: 4px solid rgb(108, 30, 252);
   padding: 0px 10px;
-  border-radius: 8px;
+  border-radius: 50px;
 }
 .search-bg .elementsContainer {
   width: 100%;
@@ -906,3 +927,44 @@ body {
   padding: 10px;
   width: 600px;
 }
+
+        </style>
+    </head>
+    
+<body>
+    <%- include('./partials/navbar.ejs') %>
+<div class="profile-bg">
+        
+    <div class="content" style="display: flex; align-items: center; justify-content: center;">
+        <div class="novel-card" style="align-items: center; width: auto;">
+            <img src="/uploads//<%= novel.cover_pic%>" style="width: 180px; height: 300px;"alt="" class="card__image">
+            <p><%= novel.title %></p>
+            <div class="novel-genre">
+                <%= novel.genre %>
+            </div>
+            <p>Written by: <%= novel.author %></p>
+            
+    
+        </div>
+        
+    </div>
+    
+    <div class="secondContainer">
+        
+    
+    </div>
+    <div class="box-container">
+        
+        <div class="lists">
+            <h1>Story</h1>
+            <p><%= novel.content %></p>
+            
+        </div>
+    </div>
+</div>
+    <%- include('./partials/footer.ejs') %>
+
+    <script src="scripts/genrePage.js"></script>
+    
+</body>
+</html>

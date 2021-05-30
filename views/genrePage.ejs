@@ -13,12 +13,13 @@
             <% novels.forEach(novel=>{ %>
 
                 <div class="novel-card">
-                    <img src="/uploads//<%= novel.cover_pic%>">
+                    <img src="/uploads/<%= novel.cover_pic%>">
                     <p><%= novel.title %></p>
+                    
                     <div class="novel-genre">
                         <%= novel.genre %>
                     </div>
-                    <a href="">Read Now</a>
+                    <a href="/novel/<%= novel._id%>">Read Now</a>
                     
                 </div>
                

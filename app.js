@@ -45,39 +45,7 @@ const upload = multer({
 })
 
 
-/*
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
- 
-var upload = multer({ storage: storage });
-*/
-/*
-const storage = multer.diskStorage({
-    
-    destination: function (request, file, callback) {
-      callback(null, uploadPath);
-    },
-    
-    
-    
-    filename: function (request, file, callback) {
-    console.log(file);
-      callback(null, Date.now() + path.extname(file.originalname));
-    },
-  });
-  
-  
-  const upload = multer({
-    storage: storage,
-    
-  });
-*/
+
 // express app
 const app = express();
 
@@ -350,6 +318,27 @@ app.get('/profile', ensureAuthenticated, (req, res) => {
     });
     
 })
+
+
+app.get('/novel/:id', (req, res) => {
+
+    const id = req.params.id;
+    Novel.findById(id).then(result => {
+        res.render('detailsNovel',{
+            style:"css/styles.css",
+            novel: result,
+            
+
+        });
+
+    }).catch(err => {
+        console.log(err);
+    })
+    
+    
+    
+})
+
 
 app.use((req, res) => {
     res.status(404).render('errorPage',{
