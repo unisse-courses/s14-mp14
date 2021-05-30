@@ -199,8 +199,6 @@ app.post('/login', (req, res, next) => {
 
 app.get('/browse', async (req, res) => {
 
-    
-   
     try {
         const novels = await Novel.find({});
         res.render('genrePage',{
@@ -210,13 +208,98 @@ app.get('/browse', async (req, res) => {
       } catch {
         res.redirect('/')
     }
-    
-    
     console.log(novels);
+           
+})
+
+app.get('/action', async (req, res) => {
+
+    try {
+        const novels = await Novel.find({genre: 'Action'});
+        res.render('actionNovel',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.redirect('/')
+    }
     
+           
+})
+
+app.get('/fantasy', async (req, res) => {
+
+    try {
+        const novels = await Novel.find({genre: 'Fantasy'});
+        res.render('fantasyNovel',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.redirect('/')
+    }
     
+           
+})
+
+app.get('/horror', async (req, res) => {
+
+    try {
+        const novels = await Novel.find({genre: 'Horror & Mystery'});
+        res.render('horrorNovel',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.redirect('/')
+    }
     
+           
+})
+
+app.get('/romance', async (req, res) => {
+
+    try {
+        const novels = await Novel.find({genre: 'Romance'});
+        res.render('romanceNovel',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.redirect('/')
+    }
     
+           
+})
+
+app.get('/comedy', async (req, res) => {
+
+    try {
+        const novels = await Novel.find({genre: 'Comedy'});
+        res.render('comedyNovel',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.redirect('/')
+    }
+    
+           
+})
+
+app.get('/slice', async (req, res) => {
+
+    try {
+        const novels = await Novel.find({genre: 'Slice of life'});
+        res.render('sliceNovel',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.redirect('/')
+    }
+    
+           
 })
 
 app.get('/search', (req, res) => {
