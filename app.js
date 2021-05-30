@@ -50,21 +50,7 @@ const upload = multer({
 const app = express();
 
 const PORT = process.env.PORT || 9005;
-/*
-const db = 'mongodb+srv://Admin:NRcmnt28@lnreader.7e0pp.mongodb.net/ln_reader?retryWrites=true&w=majority';
-const conn = mongoose.createConnection(db, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-let gfs;
-conn.once("open", () => {
-    // init stream
-    gfs = new mongoose.mongo.GridFSBucket(conn.db, {
-      bucketName: "uploads"
-    });
-  });
-  //https://dev.to/shubhambattoo/uploading-files-to-mongodb-with-gridfs-and-multer-using-nodejs-5aed
-*/
+
 
 //db 
 mongoose.connect(process.env.DATABASE_URL,
@@ -213,22 +199,7 @@ app.post('/login', (req, res, next) => {
 
 app.get('/browse', async (req, res) => {
 
-    //let query = Novel.find();
-    //const novels = await query.exec()
-    /*
-    Novel.find({}, (err, novels) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send('An error occurred', err);
-        }
-        else {
-            
-            res.render('genrePage',{
-                style:"css/styles.css"
-            }, { novels: novels });
-        }
-    });
-    */
+    
    
     try {
         const novels = await Novel.find({});
@@ -242,12 +213,7 @@ app.get('/browse', async (req, res) => {
     
     
     console.log(novels);
-    /*
-    res.render('genrePage',{
-        style:"css/styles.css"
-    }, {novels: novels});
-
-    */
+    
     
     
     
@@ -272,23 +238,16 @@ app.get('/create',  ensureAuthenticated, (req, res) => {
 })
 
 app.post('/create', upload.single("cover_image"), ensureAuthenticated, async (req, res) => {
-    //let filename;
+    
     const fileName = req.file != null ? req.file.filename : null;
     console.log(fileName);
-    /*
-    if (!req.file) {
-        console.log(error);
-     } else {
-        filename = req.file.filename
-     }
-     */
+    
     const {genre} = req.body;
 
     let uploadNovel = new Novel({title: req.body.title, author: req.user.username,cover_pic: fileName, content: req.body.content, genre: genre})
 
     
-    //saveCover(uploadNovel, req.body.image)
-    //console.log(req.file);
+    
     console.log(uploadNovel);
     
     try {
