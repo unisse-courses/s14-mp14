@@ -132,6 +132,13 @@ app.get('/', async (req, res) => {
     */
 });
 
+app.get('/about', (req, res) => {
+    res.render('aboutPage',{
+        style:"css/styles.css"
+    });
+})
+
+
 app.get('/login', (req, res) => {
     res.render('loginPage',{
         style:"css/styles.css"
