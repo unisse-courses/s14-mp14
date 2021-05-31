@@ -52,12 +52,28 @@
         <div class="home-novels-light">
 
             <h1>Editor's Choice</h1>
+            
 
 
             <div class="home-novels-container">
-                
-            </div>
 
+                <% novels1.forEach(novel=>{ %>
+
+                    <div class="novel-card" style="margin-left: 45px">
+                        <img src="/uploads/<%= novel.cover_pic%>">
+                        <p><%= novel.title %></p>
+                        
+                        <div class="novel-genre">
+                            <%= novel.genre %>
+                        </div>
+                        <a href="/novel/<%= novel._id%>">Read Now</a>
+                        
+                    </div>
+                   
+                    <% }) %>
+            </div>
+                
+  
         </div>
 
     </section>
@@ -67,6 +83,29 @@
 
             <h1>Top Rated</h1>
 
+            <div class="home-novels-container">
+
+                <% novels2.forEach(novel=>{ %>
+
+                    <div class="novel-card" style="margin-left: 45px">
+                        <img src="/uploads/<%= novel.cover_pic%>">
+                        <p style="color: white;"><%= novel.title %></p>
+                        
+                        <div class="novel-genre">
+                            <%= novel.genre %>
+                        </div>
+                        <a href="/novel/<%= novel._id%>">Read Now</a>
+                        
+                    </div>
+                   
+                    <% }) %>
+
+
+            </div>
+
+            
+
+            
             
 
         </div>
@@ -78,6 +117,26 @@
         <div class="home-novels-light">
 
             <h1>New Arrivals</h1>
+
+            <div class="home-novels-container">
+
+                <% novels3.forEach(novel=>{ %>
+
+                    <div class="novel-card" style="margin-left: 45px">
+                        <img src="/uploads/<%= novel.cover_pic%>">
+                        <p><%= novel.title %></p>
+                        
+                        <div class="novel-genre">
+                            <%= novel.genre %>
+                        </div>
+                        <a href="/novel/<%= novel._id%>">Read Now</a>
+                        
+                    </div>
+                   
+                    <% }) %>
+
+
+            </div>
 
         </div>
         

@@ -323,7 +323,7 @@ body {
 /* home page content */
 
 .home-novels-dark {
-  height: 350px;
+  height: 525px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -333,7 +333,7 @@ body {
 }
 
 .home-novels-light {
-  height: 350px;
+  height: 525px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -355,10 +355,14 @@ body {
 }
 
 .home-novels-container {
+  margin-top: 15px;
   margin-bottom: auto;
   width: 100%;
   background-color: transparent;
   height: 280px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 /* login container */
@@ -831,6 +835,16 @@ body {
   font-weight: 600;
   display: block;
   line-height: 50px;
+}
+
+.genre-links:focus {
+  text-decoration: none;
+  color: white;
+  margin-left: 30px;
+  font-weight: 600;
+  display: block;
+  line-height: 50px;
+  border-bottom: 5px solid rgb(108, 30, 252);
 }
 
 .genre-links-active {

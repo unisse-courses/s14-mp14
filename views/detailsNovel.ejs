@@ -938,8 +938,8 @@ body {
     <div class="content" style="display: flex; align-items: center; justify-content: center;">
         <div class="novel-card" style="align-items: center; width: auto;">
             <img src="/uploads//<%= novel.cover_pic%>" style="width: 180px; height: 300px;"alt="" class="card__image">
-            <p><%= novel.title %></p>
-            <div class="novel-genre">
+            <h3><%= novel.title %></h3>
+            <div class="novel-genre" style="background-color: rgb(108, 30, 252); color: white;">
                 <%= novel.genre %>
             </div>
             <p>Written by: <%= novel.author %></p>
@@ -957,7 +957,7 @@ body {
         
         <div class="lists">
             <h1>Story</h1>
-            <p><%= novel.content %></p>
+            <p style="line-height: 1.8;"><%= novel.content %></p>
             
         </div>
     </div>

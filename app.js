@@ -44,6 +44,9 @@ const upload = multer({
     
 })
 
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 
 // express app
@@ -107,10 +110,26 @@ app.use(function (req, res, next) {
 
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+
+    try {
+        const novels1 = await Novel.find({}).limit(5);
+        const novels2 = await Novel.find({}).limit(5).sort('-title');
+        const novels3 = await Novel.find({}).limit(5).sort({author: 'descending'});
+        res.render('index',{
+            style:"css/styles.css",
+            novels1: novels1,
+            novels2: novels2,
+            novels3: novels3,
+        },);
+      } catch {
+        res.redirect('/')
+    }
+    /*
     res.render('index',{
         style:"css/styles.css"
     });
+    */
 });
 
 app.get('/login', (req, res) => {
@@ -302,11 +321,51 @@ app.get('/slice', async (req, res) => {
            
 })
 
-app.get('/search', (req, res) => {
+app.get('/search', async (req, res) => {
+    
+    try {
+        const searchStr = 'popeye';
+        //console.log(req.query.search);
+        const novels = await Novel.find({$text: {$search: searchStr}});
+        res.render('searchPage',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
+      } catch {
+        res.redirect('/')
+    }
+    
+    /*
+    if(req.query.search) {
+        
+        const searchStr = req.query.search;
+        
+        const novels = Novel.find({author: searchStr});
+        
+        console.log(searchStr);
+        console.log(novels);
+        res.render('searchPage',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
 
+
+    } else {
+        res.render('searchPage',{
+            style:"css/styles.css"
+        },);
+        
+    }
+    */
+
+    //{$text: {$search: searchStr}}
+    /*
     res.render('searchPage',{
         style:"css/styles.css"
     },);
+
+    
+    */
     /*
     try {
         let searchString = req.search;
@@ -365,7 +424,7 @@ app.post('/create', upload.single("cover_image"), ensureAuthenticated, async (re
 
     
     
-    console.log(uploadNovel);
+    //console.log(uploadNovel);
     
     try {
         uploadNovel = await uploadNovel.save();
@@ -388,11 +447,7 @@ function removeCover(fileName){
 
 
 app.get('/profile', ensureAuthenticated, async (req, res) => {
-    /*
-    res.render('profilePage',{
-        style:"css/styles.css",  user: req.user,
-    });
-    */
+    
     try {
         let userSearch = req.user.username;
         
