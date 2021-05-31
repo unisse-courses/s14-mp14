@@ -331,7 +331,7 @@ app.get('/slice', async (req, res) => {
 app.get('/search', async (req, res) => {
     
     try {
-        const searchStr = 'popeye';
+        const searchStr = req.query.search;//'clean';
         //console.log(req.query.search);
         const novels = await Novel.find({$text: {$search: searchStr}});
         res.render('searchPage',{
@@ -339,7 +339,13 @@ app.get('/search', async (req, res) => {
             novels: novels,
         },);
       } catch {
-        res.redirect('/')
+        const searchStr = '';//'clean';
+        //console.log(req.query.search);
+        const novels = await Novel.find({$text: {$search: searchStr}});
+        res.render('searchPage',{
+            style:"css/styles.css",
+            novels: novels,
+        },);
     }
     
     /*
